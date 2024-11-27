@@ -3,6 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { IoIosCloudUpload } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import { FaFileCsv } from "react-icons/fa";
+import Layout from '@/app/Layout/page';
 
 interface FileItem {
   type: string;
@@ -104,7 +105,8 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <Layout>
+        <div className="max-w-3xl mx-auto p-6" id='/upload'>
       <div 
         className={`border-2 border-dashed rounded-[30px] w-[800px] h-[350px] p-16 mt-20 text-center
           ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}
@@ -113,8 +115,8 @@ const FileUpload = () => {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop} >
         <div className="flex flex-col items-center gap-4">
-          <div className="w-40 h-40 bg-blue-100 rounded-full flex items-center justify-center">
-            <IoIosCloudUpload className="w-40 h-40 text-blue" />
+          <div className="w-40 h-40  flex items-center justify-center">
+            <IoIosCloudUpload className="w-40 h-40 text-[#D3E1F1]" />
           </div>
           <p className="text-gray-600 italic">Drag and drop or select a file</p>
           <input
@@ -126,12 +128,11 @@ const FileUpload = () => {
           />
           <label 
             htmlFor="file-input" 
-            className="mt-4 px-6 py-2 bg-primary-amber text-white rounded-md cursor-pointer hover:bg-primary-amber-dark">
+            className="mt-4 px-6 py-2 bg-[#FBBC05] text-white rounded-md cursor-pointer hover:bg-[#FBBC05]">
             Select File
           </label>
         </div>
       </div>
-
       {files.length > 0 && (
         <div className="overflow-x-auto">
           <table className="w-full mt-32">
@@ -148,7 +149,7 @@ const FileUpload = () => {
                 <tr key={index} className="border-b">
                   <td className="py-2 px-4">
                     <div className="w-8 h-8 bg-green-50 rounded flex items-center justify-center">
-                      <FaFileCsv className="w-6 h-6 text-primary-amber" />
+                      <FaFileCsv className="w-6 h-6 text-[#FBBC05]" />
                     </div>
                   </td>
                   <td className="py-2 px-4">{file.name}</td>
@@ -156,7 +157,7 @@ const FileUpload = () => {
                     <div className="flex items-center gap-2">
                       <div className="flex-1 bg-gray-200 rounded-full h-2">
                         <div 
-                          className="bg-primary-amber h-2 rounded-full transition-all duration-200" 
+                          className="bg-[#FBBC05] h-2 rounded-full transition-all duration-200" 
                           style={{width: `${file.status}%`}}
                         />
                       </div>
@@ -166,7 +167,7 @@ const FileUpload = () => {
                   <td className="py-2 px-4">
                     <button 
                       onClick={() => handleDelete(index)}
-                      className="text-red hover:text-red-700">
+                      className="text-[#ED2D4D] hover:text-red-700">
                       <FaTrash className="w-5 h-5" />
                     </button>
                   </td>
@@ -177,7 +178,9 @@ const FileUpload = () => {
         </div>
       )}
     </div>
-  );
+
+    </Layout>
+    );
 };
 
 export default FileUpload;

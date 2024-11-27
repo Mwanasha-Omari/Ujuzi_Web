@@ -1,3 +1,4 @@
+'use client'
 const Teachers = () => {  
   return (
         <div className="flex-1 p-6">
