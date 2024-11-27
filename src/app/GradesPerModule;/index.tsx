@@ -20,7 +20,6 @@ const GradesPerModule = () => {
   const handleClick = (teacher: { name: string; details: string }) => {
     setSelectedTeacher(teacher);
   };
-
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-center mb-8">Grades Per Module</h1>
